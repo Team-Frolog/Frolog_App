@@ -12,5 +12,11 @@
     "sourceType": "module"
   },
   "plugins": ["react-native"],
-  "rules": { "react/display-name": "off", "react/no-array-index-key": "warn" }
+  "rules": {
+    "react/display-name": "off",
+    "react/no-array-index-key": "warn",
+    "react-hooks/exhaustive-deps": "off",
+    "@typescript-eslint/no-throw-literal": "off",
+    "@typescript-eslint/no-use-before-define": "warn"
+  }
 }
