@@ -17,6 +17,8 @@ function MainWebView() {
     const { nativeEvent } = event;
     const { type, data } = JSON.parse(nativeEvent.data);
 
+    console.log(type, data);
+
     if (type === 'THEME' && THEME_COLOR[data]) setThemeState(THEME_COLOR[data]);
   };
 
@@ -41,9 +43,10 @@ function MainWebView() {
         ]}
       >
         <WebView
-          source={{ uri: 'https://frolog.kr' }}
+          source={{ uri: 'http://localhost:3000' }}
           onMessage={(event) => handleMessage(event)}
           onShouldStartLoadWithRequest={(req) => handleExternalPage(req)}
+          allowsBackForwardNavigationGestures
         />
       </View>
     </>
