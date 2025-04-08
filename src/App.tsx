@@ -1,16 +1,10 @@
-import { StyleSheet, View } from 'react-native';
-import WebView from 'react-native-webview';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import MainWebView from './components/MainWebView';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <WebView source={{ uri: 'https://www.frolog.kr' }} />
-    </View>
+    <SafeAreaProvider>
+      <MainWebView />
+    </SafeAreaProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});
