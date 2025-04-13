@@ -1,28 +1,36 @@
 {
   "expo": {
-    "name": "Frolog_App_practice",
-    "slug": "Frolog_App_practice",
+    "name": "프롤로그",
+    "slug": "Frolog_App",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/icons/ios-icon.png",
     "userInterfaceStyle": "light",
     "newArchEnabled": true,
     "splash": {
-      "image": "./assets/splash-icon.png",
+      "image": "./assets/icons/icon.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#0e0e0e"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.frolog.kr",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
-      }
+        "foregroundImage": "./assets/icons/android-icon.png",
+        "backgroundColor": "#0e0e0e"
+      },
+      "package": "com.frolog.kr"
     },
-    "web": {
-      "favicon": "./assets/favicon.png"
+    "owner": "sebellko",
+    "extra": {
+      "eas": {
+        "projectId": "6435d2b9-1a0c-490e-8d8d-c6604ab06016"
+      }
     }
   }
 }

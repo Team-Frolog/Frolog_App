@@ -41,7 +41,7 @@ function MainWebView() {
         ]}
       >
         <WebView
-          source={{ uri: 'http://localhost:3000' }}
+          source={{ uri: 'https://frolog-dev.vercel.app/default' }}
           onMessage={(event) => handleMessage(event)}
           onShouldStartLoadWithRequest={(req) => handleExternalPage(req)}
           allowsBackForwardNavigationGestures
