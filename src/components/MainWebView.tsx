@@ -1,17 +1,31 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { StatusBar, StatusBarStyle } from 'expo-status-bar';
-import { Linking, StyleSheet, View } from 'react-native';
+import { BackHandler, Linking, StyleSheet, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import WebView, { WebViewMessageEvent } from 'react-native-webview';
 import { ShouldStartLoadRequest } from 'react-native-webview/lib/WebViewTypes';
 import { THEME_COLOR } from '../constants/theme';
 
 function MainWebView() {
+  const webViewRef = useRef<WebView>(null);
   const [themeState, setThemeState] = useState({
     color: 'light' as StatusBarStyle,
     bgColor: '#fff',
   });
+  const [canGoBack, setCanGoBack] = useState<boolean>(false);
   const insets = useSafeAreaInsets();
+
+  useEffect(() => {
+    const handleBack = () => {
+      webViewRef.current?.goBack();
+      return true;
+    };
+
+    BackHandler.addEventListener('hardwareBackPress', handleBack);
+
+    return () =>
+      BackHandler.removeEventListener('hardwareBackPress', handleBack);
+  }, [canGoBack]);
 
   const handleMessage = (event: WebViewMessageEvent) => {
     const { nativeEvent } = event;
@@ -41,9 +55,11 @@ function MainWebView() {
         ]}
       >
         <WebView
-          source={{ uri: 'https://frolog-dev.vercel.app/default' }}
+          ref={webViewRef}
+          source={{ uri: 'https://frolog.kr' }}
           onMessage={(event) => handleMessage(event)}
           onShouldStartLoadWithRequest={(req) => handleExternalPage(req)}
+          onNavigationStateChange={(nav) => setCanGoBack(nav.canGoBack)}
           allowsBackForwardNavigationGestures
         />
       </View>
