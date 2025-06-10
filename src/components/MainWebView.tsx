@@ -15,6 +15,9 @@ function MainWebView() {
   const [canGoBack, setCanGoBack] = useState<boolean>(false);
   const insets = useSafeAreaInsets();
 
+  const userAgent =
+    'Mozilla/5.0 (Linux; Android 10; Android SDK built for x86 Build/LMY48X) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/81.0.4044.117 Mobile Safari/608.2.11 WebView/1.0';
+
   useEffect(() => {
     const handleBack = () => {
       webViewRef.current?.goBack();
@@ -56,6 +59,7 @@ function MainWebView() {
       >
         <WebView
           ref={webViewRef}
+          userAgent={userAgent}
           source={{ uri: 'https://frolog.kr' }}
           onMessage={(event) => handleMessage(event)}
           onShouldStartLoadWithRequest={(req) => handleExternalPage(req)}
