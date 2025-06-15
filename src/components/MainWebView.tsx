@@ -56,6 +56,7 @@ function MainWebView() {
       >
         <WebView
           ref={webViewRef}
+          userAgent={`${navigator.userAgent} WebView/1.0`}
           source={{ uri: 'https://frolog.kr' }}
           onMessage={(event) => handleMessage(event)}
           onShouldStartLoadWithRequest={(req) => handleExternalPage(req)}
